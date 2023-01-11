@@ -1,26 +1,21 @@
 <template>
-	<div
-		class="addBlock-content"
-		v-if="isShowAddMenu == true"
-		style="z-index: 2001;"
-		@mousewheel.prevent
-	>
+	<div v-if="isShowAddMenu == true" class="addBlock-content" style="z-index: 2001" @mousewheel.prevent>
 		<!-- {{getterAddMenuContentLayerXY}} -->
 		<div
 			class="dropdown-menu"
-			:style="{ top: getterAddMenuContentLayerXY.y, left:getterAddMenuContentLayerXY.x }"
+			:style="{ top: getterAddMenuContentLayerXY.y, left: getterAddMenuContentLayerXY.x }"
 			@mousewheel.stop
 		>
-			<div v-for="(item,index) in addBlockInfoArray" :key="index">
-				<span class="block-type-tip" v-if="index == 0">基础模块</span>
-				<span class="block-type-tip" v-if="index == 7">媒体和数据</span>
+			<div v-for="(item, index) in addBlockInfoArray" :key="index">
+				<span v-if="index == 0" class="block-type-tip">基础模块</span>
+				<span v-if="index == 7" class="block-type-tip">媒体和数据</span>
 				<div class="block-item" @click="addBlock(item.type)">
 					<div class="block-item-img">
-						<img :src="getImgUrl(item.type)" style="width: 100%;" />
+						<img :src="getImgUrl(item.type)" style="width: 100%" />
 					</div>
 					<div class="block-item-intro">
-						<h4>{{item.name}}</h4>
-						<span>{{item.tip}}</span>
+						<h4>{{ item.name }}</h4>
+						<span>{{ item.tip }}</span>
 					</div>
 				</div>
 			</div>
@@ -89,12 +84,11 @@
 }
 </style>
 
-
 <script>
 // @ is an alias to /src
 
 export default {
-	name: "addBlock-content",
+	name: "AddBlockContent",
 	data() {
 		return {
 			isShowMenu: this.isShowAddMenu,
@@ -142,26 +136,6 @@ export default {
 			]
 		};
 	},
-	watch: {
-		isShowAddMenu: function(value) {
-			if (value == true) {
-				document.addEventListener("click", e => {
-					// console.log(event.target.getAttribute("class"))
-					if (
-						event.target.getAttribute("class") !=
-						"iconfont iconplus"
-					) {
-						if (
-							event.target.getAttribute("class") !=
-							"dropdown-menu"
-						) {
-							this.$store.commit("mutationIsShowAddMenu", false);
-						}
-					}
-				});
-			}
-		}
-	},
 	computed: {
 		isShowAddMenu() {
 			return this.$store.state.isShowAddMenu;
@@ -174,6 +148,20 @@ export default {
 		},
 		currentPageBlocks() {
 			return this.$store.state.currentPageBlocks;
+		}
+	},
+	watch: {
+		isShowAddMenu: function (value) {
+			if (value == true) {
+				document.addEventListener("click", e => {
+					// console.log(event.target.getAttribute("class"))
+					if (event.target.getAttribute("class") != "iconfont iconplus") {
+						if (event.target.getAttribute("class") != "dropdown-menu") {
+							this.$store.commit("mutationIsShowAddMenu", false);
+						}
+					}
+				});
+			}
 		}
 	},
 	methods: {
@@ -264,10 +252,8 @@ export default {
 			}
 		},
 		getImgUrl(type) {
-			return require("@/assets/" + type + ".png");
+			return new URL("../assets/" + type + ".png", import.meta.url).href;
 		}
 	}
 };
 </script>
-
-

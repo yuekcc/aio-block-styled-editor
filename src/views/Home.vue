@@ -133,15 +133,15 @@
 // 引入vuedraggable拖拽组件
 import draggable from "vuedraggable";
 // 编写的模块组件
-import AddBlockBtn from "@/components/AddBlockBtn";
-import AddBlockContent from "@/components/AddBlockContent";
-import TextBlock from "@/components/basicBlockComponents/TextBlock";
-import TodoBlock from "@/components/basicBlockComponents/TodoBlock";
-import Heading1 from "@/components/basicBlockComponents/Heading1";
-import Heading2 from "@/components/basicBlockComponents/Heading2";
-import Heading3 from "@/components/basicBlockComponents/Heading3";
-import BulletedList from "@/components/basicBlockComponents/BulletedList";
-import Hint from "@/components/basicBlockComponents/Hint";
+import AddBlockBtn from "@/components/AddBlockBtn.vue";
+import AddBlockContent from "@/components/AddBlockContent.vue";
+import TextBlock from "@/components/basicBlockComponents/TextBlock.vue";
+import TodoBlock from "@/components/basicBlockComponents/TodoBlock.vue";
+import Heading1 from "@/components/basicBlockComponents/Heading1.vue";
+import Heading2 from "@/components/basicBlockComponents/Heading2.vue";
+import Heading3 from "@/components/basicBlockComponents/Heading3.vue";
+import BulletedList from "@/components/basicBlockComponents/BulletedList.vue";
+import Hint from "@/components/basicBlockComponents/Hint.vue";
 
 export default {
 	name: "Home",

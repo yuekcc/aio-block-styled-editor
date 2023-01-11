@@ -3,24 +3,61 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "serve": "vite",
+    "build": "vite build"
   },
   "dependencies": {
-    "core-js": "^3.6.4",
-    "element-ui": "^2.13.0",
-    "vue": "^2.6.11",
+    "element-ui": "^2.15.0",
+    "lodash": "^4.17.21",
+    "vue": "^2.7.0",
     "vue-router": "^3.1.6",
     "vuedraggable": "^2.23.2",
     "vuex": "^3.1.3"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.3.0",
-    "@vue/cli-plugin-router": "~4.3.0",
-    "@vue/cli-service": "~4.3.0",
+    "@vitejs/plugin-vue2": "^2.2.0",
+    "eslint": "^8.0.0",
+    "eslint-config-prettier": "^8.0.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-vue": "^9.8.0",
     "less": "^3.0.4",
-    "less-loader": "^5.0.0",
-    "vue-template-compiler": "^2.6.11"
+    "prettier": "^2.0.0",
+    "vite": "^4.0.4"
+  },
+  "prettier": {
+    "arrowParens": "avoid",
+    "endOfLine": "auto",
+    "printWidth": 110,
+    "quoteProps": "consistent",
+    "semi": true,
+    "singleQuote": false,
+    "useTabs": true,
+    "tabWidth": 4,
+    "trailingComma": "none"
+  },
+  "eslintConfig": {
+    "env": {
+      "es2021": true,
+      "commonjs": true,
+      "browser": true,
+      "node": true,
+      "worker": true,
+      "mocha": true
+    },
+    "parserOptions": {
+      "sourceType": "module"
+    },
+    "plugins": [
+      "prettier"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "plugin:vue/vue3-recommended",
+      "plugin:prettier/recommended"
+    ],
+    "rules": {
+      "vue/component-tags-order": 0
+    }
   },
   "browserslist": [
     "> 1%",

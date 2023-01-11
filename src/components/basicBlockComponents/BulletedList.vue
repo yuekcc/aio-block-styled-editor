@@ -2,12 +2,12 @@
 	<div class="BulletedList">
 		<span class="left-Symbol">·</span>
 		<el-input
+			v-model="mValue.text"
 			type="textarea"
 			autosize
-			v-model="mValue.text"
 			placeholder="输入列表内容"
-			@keydown.native="addNewTextBlock($event,BlocksIndex)"
-			@keyup.native="nextFocus($event,BlocksIndex)"
+			@keydown.native="addNewTextBlock($event, BlocksIndex)"
+			@keyup.native="nextFocus($event, BlocksIndex)"
 		></el-input>
 	</div>
 </template>
@@ -20,8 +20,13 @@ export default {
 		return {
 			mValue: this.value,
 			cursorStart: 0,
-			isEmptyDelete:true
+			isEmptyDelete: true
 		};
+	},
+	computed: {
+		currentPageBlocks() {
+			return this.$store.state.currentPageBlocks;
+		}
 	},
 	watch: {
 		mValue(val) {
@@ -58,10 +63,7 @@ export default {
 							}
 						}
 					};
-					this.$store.commit(
-						"mutationAddCurrentPageBlocks",
-						addBlockInfo
-					);
+					this.$store.commit("mutationAddCurrentPageBlocks", addBlockInfo);
 					lastInput.focus();
 					this.currentPageBlocks.splice(index, 1);
 				} else {
@@ -87,10 +89,7 @@ export default {
 					}
 
 					// 提交数据到vuex
-					this.$store.commit(
-						"mutationAddCurrentPageBlocks",
-						addBlockInfo
-					);
+					this.$store.commit("mutationAddCurrentPageBlocks", addBlockInfo);
 				}
 			}
 		},
@@ -139,11 +138,6 @@ export default {
 				this.isEmptyDelete = false;
 			}
 		}
-	},
-	computed: {
-		currentPageBlocks() {
-			return this.$store.state.currentPageBlocks;
-		}
 	}
 };
 </script>
@@ -153,7 +147,7 @@ export default {
 	display: flex;
 	align-items: center;
 
-	.left-Symbol{
+	.left-Symbol {
 		font-size: 50px;
 		height: 25px;
 	}
